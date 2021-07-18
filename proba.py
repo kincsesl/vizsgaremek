@@ -22,7 +22,7 @@ for href in hrefek:
 print(linkek)
 
 linkek = []
-
+#Megjegyzés
 for i in range(1, 31):
     xp = '/html/body/div/div[2]/div/div/div['+str(i)+']/div[1]/a'
     linkek.append(driver.find_element_by_xpath(xp).get_attribute("href"))
