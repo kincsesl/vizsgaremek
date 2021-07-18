@@ -1,0 +1,1 @@
+Automata tesztelői vizsgaremek.
