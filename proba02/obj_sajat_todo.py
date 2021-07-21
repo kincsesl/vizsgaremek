@@ -20,19 +20,19 @@ class Todooldal:
         self.a_teendők_száma = self.tartalmazó_konténer.find_element_by_xpath("//span['@class = ng-binding']")
 
     def mennyi(self):
-        self.a = self.a_teendők_száma.text.find(" ")  # Megkeresi az első szóközt az 5 of 5... mezőben
+        self.a = self.a_teendők_száma.text.find(" ")  # Megkeresi az első szóközt az x of y... mezőben
         s = ""
         for i in range(self.a):
             s += self.a_teendők_száma.text[i]
-        return s  # A mező elejéről kiírja a sztringet a szóközig.
+        return s  # A mező elejéről kiírja a sztringet (x) a szóközig.
 
     def összes(self):
-        a = self.a_teendők_száma.text.find("of ")  # Megkeresi az of szócskát az 5 of 5... mezőben.
+        a = self.a_teendők_száma.text.find("of ")  # Megkeresi az of szócskát az x of y... mezőben.
         b = self.a_teendők_száma.text.find(" ", a + 3)  # Innen továbbkeres a következő szóközig.
         s = ""
         for i in range(a + 3, b):
             s += self.a_teendők_száma.text[i]
-        return s
+        return s # visszaadja y-t.
 
     def rákatt(self, x):
         self.teendőlista[x].find_element_by_tag_name("input").click()
@@ -57,7 +57,7 @@ for i in range(len(oldal.teendőlista)):
 # Kiírja, az X of Y mezőből az értékeket + a kipipáltan maradtak számát.
 print(oldal.mennyi(), "/", oldal.összes(), ":", kipipálatlan)
 
-if oldal.mennyi() == str(kipipálatlan):  # Ha stimmel, akkor "minden oké".
+if int(oldal.mennyi()) == kipipálatlan:  # Ha stimmel, akkor "minden oké".
     print("Minden oké.")
 else:
     print("Valami nem oké.")
