@@ -67,7 +67,6 @@ oldal.listát_frissít()
 oldal.új_todo("Új feladat.")
 oldal.új_todo("Még egy.")
 oldal.új_todo("Meg egy harmadik.")
-time.sleep(2)
 
 számlista = []  # Véletlenszámlista lesz.
 for i in range(100):
@@ -89,5 +88,5 @@ if int(oldal.mennyi()) == kipipálatlan:  # Ha stimmel, akkor "minden oké".
     print("Minden oké.")
 else:
     print("Valami nem oké.")
-
+time.sleep(2)
 driver.close()
