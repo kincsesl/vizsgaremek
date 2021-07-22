@@ -1,7 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from datetime import datetime, date, time, timezone
-
 
 class TestProba(object):
     def setup(self):
