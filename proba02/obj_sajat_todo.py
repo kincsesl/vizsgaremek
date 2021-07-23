@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import random
+import randomstring
 
 options = Options()
 # options.headless = True
@@ -70,7 +70,7 @@ oldal.új_todo("Meg egy harmadik.")
 
 számlista = []  # Véletlenszámlista lesz.
 for i in range(100):
-    a = random.randint(0, len(oldal.teendőlista) - 1)  # Véletlenszám 0-utolsó között, erre az elelmre kattintok.
+    a = randomstring.randint(0, len(oldal.teendőlista) - 1)  # Véletlenszám 0-utolsó között, erre az elelmre kattintok.
     számlista.append(a)
     oldal.rákatt(a)  # Rákattint az a-adik listaelemre.
 

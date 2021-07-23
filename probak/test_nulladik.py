@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import random
+import randomstring
 
 
 def test_proba():
@@ -75,7 +75,7 @@ def test_proba2():
 
     számlista = []  # Véletlenszámlista lesz.
     for i in range(100):
-        a = random.randint(0, len(oldal.teendőlista) - 1)  # Véletlenszám 0-utolsó között, erre az elelmre kattintok.
+        a = randomstring.randint(0, len(oldal.teendőlista) - 1)  # Véletlenszám 0-utolsó között, erre az elelmre kattintok.
         számlista.append(a)
         oldal.rákatt(a)  # Rákattint az a-adik listaelemre.
 
