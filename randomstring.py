@@ -14,24 +14,24 @@ def veletlen(s, keveri):  # pl. (0[1-15],a[2],A[1-5],&[3], True)
     szimbolum = ["-", "_", "+", "*", "/", "!", "?", "&", "#", ">", "<", "%", "="]
     lista = s.split(",")
 
-    def ellenoriz(s):
+    def ellenoriz():
         def szame(x):
-            log = True
+            logikai = True
             for i in range(len(x)):
-                log = log and x[i] in szamjegy
-            return log
+                logikai = log and x[i] in szamjegy
+            return logikai
 
         log = True
-        for elem in lista:
-            log = log and elem[0] in {"0", "a", "A", "&", "á", "Á"}
-            log = log and elem[1] == "[" and elem[len(elem) - 1] == "]"
+        for eleme in lista:
+            log = log and eleme[0] in {"0", "a", "A", "&", "á", "Á"}
+            log = log and eleme[1] == "[" and eleme[len(eleme) - 1] == "]"
             if log:
-                alelem = elem[elem.find("[") + 1:elem.find("]")]
+                alelem = eleme[eleme.find("[") + 1:eleme.find("]")]
                 # log = log and alelem.find("[") == -1 and alelem.find("]") == 0
                 kotojel = alelem.find("-")
                 if kotojel > 0:
                     egyik = alelem[alelem.find("[") + 1:kotojel]
-                    masik = alelem[kotojel + 1:elem.find("]")]
+                    masik = alelem[kotojel + 1:eleme.find("]")]
                     log = log and szame(egyik)
                     log = log and szame(masik)
                     if log:
@@ -42,8 +42,8 @@ def veletlen(s, keveri):  # pl. (0[1-15],a[2],A[1-5],&[3], True)
         return log
 
     def szetszed(a):
-        reszek = []
-        reszek.append(a[0])
+        reszek = [a[0]]
+        # reszek.append(a[0])
         kotojel = a.find("-")
         if kotojel > -1:
             egyik = a[a.find("[") + 1:kotojel]
@@ -66,15 +66,15 @@ def veletlen(s, keveri):  # pl. (0[1-15],a[2],A[1-5],&[3], True)
         return fuzer
 
     def kever(a):
-        lista = list(a)
+        keverni = list(a)
         b = ""
         while len(b) < len(a) - 1:
-            betu = str(lista[random.randint(1, len(lista) - 1)])
+            betu = str(keverni[random.randint(1, len(keverni) - 1)])
             b += betu
-            lista.remove(betu)
+            keverni.remove(betu)
         return b
 
-    if ellenoriz(s):
+    if ellenoriz():
         kimegy = ""
         for elem in lista:
             darabok = szetszed(elem)
@@ -92,9 +92,10 @@ def veletlen(s, keveri):  # pl. (0[1-15],a[2],A[1-5],&[3], True)
                 kimegy += general(szimbolum, darabok[1], darabok[2])
         if keveri:
             kimegy = kever(kimegy)
-        return kimegy
     else:
-        return ("Nem jók a bemenő adatok.")
+        kimegy = "Nem jók a bemenő adatok."
+
+    return kimegy
 
 
 def emil():
