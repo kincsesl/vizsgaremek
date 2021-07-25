@@ -4,8 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-class Sign_upLap():
-    def __init__(self):
+class test_Sign_upLap():
+    def setup(self):
         self.options = Options()
         # self.options.headless = True
         self.driver = webdriver.Chrome(options=self.options)
@@ -14,6 +14,9 @@ class Sign_upLap():
         self.emil = self.driver.find_element_by_xpath(locators.emil)
         self.password = self.driver.find_element_by_xpath(locators.password)
         self.submit = self.driver.find_element_by_xpath(locators.submit)  # Sign up felirat.
+
+    def teardown(self): # Lerombolás.
+        self.driver.close()
 
     def hibaablak(self):
         self.felirat = self.driver.find_element_by_xpath(locators.failed)

@@ -2,7 +2,7 @@ import randomstring
 import locators
 import classok
 
-lap = classok.Sign_upLap()
+lap = classok.test_Sign_upLap()
 assert lap.test_01_rossz_mezok(randomstring.nev(), "", "", locators.userhiba[1])
 lap = classok.Sign_upLap()
 assert lap.test_01_rossz_mezok(randomstring.nev(), randomstring.emil(), "", locators.userhiba[2])
